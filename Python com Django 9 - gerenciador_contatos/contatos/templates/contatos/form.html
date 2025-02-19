@@ -1,0 +1,16 @@
+{% load static %}
+<html>
+<head>
+    <title>Gerenciar Contato</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Gerenciar Contato</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'listar_contatos' %}">Voltar</a>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% load static %}
+<html>
+<head>
+    <title>Lista de Contatos</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Contatos</h1>
+    <a href="{% url 'adicionar_contato' %}">Adicionar Novo Contato</a>
+    <ul>
+        {% for contato in contatos %}
+            <li>
+                {{ contato.nome }} - {{ contato.email }} - {{ contato.telefone }} - {{ contato.endereco }}
+                <a href="{% url 'editar_contato' contato.id %}">Editar</a>
+                <a href="{% url 'excluir_contato' contato.id %}">Excluir</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
