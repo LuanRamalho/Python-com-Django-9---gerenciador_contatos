@@ -3,18 +3,52 @@
 <head>
     <title>Lista de Contatos</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .contato {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .contato p {
+            margin: 5px 0;
+        }
+        .acoes {
+            margin-top: 10px;
+        }
+        .acoes a {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+        .acoes a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Contatos</h1>
     <a href="{% url 'adicionar_contato' %}">Adicionar Novo Contato</a>
-    <ul>
+    <div>
         {% for contato in contatos %}
-            <li>
-                {{ contato.nome }} - {{ contato.email }} - {{ contato.telefone }} - {{ contato.endereco }}
-                <a href="{% url 'editar_contato' contato.id %}">Editar</a>
-                <a href="{% url 'excluir_contato' contato.id %}">Excluir</a>
-            </li>
+            <div class="contato">
+                <p><strong>Nome:</strong> {{ contato.nome }}</p>
+                <p><strong>Email:</strong> {{ contato.email }}</p>
+                <p><strong>Telefone:</strong> {{ contato.telefone }}</p>
+                <p><strong>Endereço:</strong> {{ contato.endereco }}</p>
+                <div class="acoes">
+                    <a href="{% url 'editar_contato' contato.id %}">Editar</a>
+                    <a href="{% url 'excluir_contato' contato.id %}">Excluir</a>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
